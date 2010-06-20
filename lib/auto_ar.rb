@@ -28,7 +28,7 @@ if defined?(ActiveRecord::Base)
     end
   end
 
-  module AutoARRefrection
+  module AutoARReflection
     def self.included(base)
       base.class_eval do
         unless defined? method_missing_without_auto_ar
@@ -46,9 +46,8 @@ if defined?(ActiveRecord::Base)
           f_key = method_name.singularize.foreign_key
           if self.respond_to?(f_key)
             target_klass = Object.const_get(method_name.classify)
-#            target_klass.class_eval("has_many :#{self.class.to_s.pluralize.underscore.intern}")
-#            self.class.class_eval("belongs_to :#{method_sym}")
-            foo(target_klass, self.class)
+            target_klass.class_eval("has_many :#{self.class.to_s.pluralize.underscore.intern}")
+            self.class.class_eval("belongs_to :#{method_sym}")
           else
             raise NoMethodError
           end
@@ -70,14 +69,9 @@ if defined?(ActiveRecord::Base)
         self.send(method_sym, *args)
       end
     end
-
-    def foo(parent_class, child_class)
-      parent_class.class_eval("has_many :#{child_class.to_s.pluralize.underscore}")
-      child_class.class_eval("belongs_to :#{parent_class.to_s.singularize.underscore}")
-    end
   end
   Module.instance_eval{ include AutoAR }
-  ActiveRecord::Base.instance_eval{ include AutoARRefrection }
+  ActiveRecord::Base.instance_eval{ include AutoARReflection }
 else
   raise "Error: ActiveRecord required."
 end

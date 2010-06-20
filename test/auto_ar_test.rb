@@ -1,6 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper.rb'
 
-class AutArTest < Test::Unit::TestCase
+class AutoArTest < Test::Unit::TestCase
   DBFILE = "test/auto_ar_test.sqlite3"
   def setup
     ActiveRecord::Base.establish_connection(:adapter => "sqlite3",
