@@ -1,0 +1,13 @@
+This gem makes subclasses of ActiveRecord::Base and
+sets associations(has_many, belongs_to) to the class on demand.
+
+  require 'rubygems'
+  require 'active_record'
+  require 'auto_ar'
+
+  ActiveRecord::Base.establish_connection(:adapter => 'sqlite3',
+                                          :database => 'foo.sqlite3')
+
+  blogs = Blog.find(:all) # <= You can use Blog class without blog.rb
+  comments = blog.comments # <= You can get Comment class instances without comment.rb
+
