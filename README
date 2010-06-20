@@ -9,5 +9,5 @@ sets associations(has_many, belongs_to) to the class on demand.
                                           :database => 'foo.sqlite3')
 
   blogs = Blog.find(:all) # <= You can use Blog class without blog.rb
-  comments = blog.comments # <= You can get Comment class instances without comment.rb
+  comments = blog[0].comments # <= You can get Comment class instances without comment.rb
 
