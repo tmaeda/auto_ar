@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{auto_ar}
-  s.version = "0.0.1"
+  s.version = "0.0.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 1.2") if s.respond_to? :required_rubygems_version=
   s.authors = ["Tomoki MAEDA"]
@@ -13,10 +13,10 @@ Gem::Specification.new do |s|
   s.extra_rdoc_files = ["lib/auto_ar.rb"]
   s.files = ["Manifest", "Rakefile", "lib/auto_ar.rb", "test/auto_ar_test.rb", "test/test_helper.rb", "auto_ar.gemspec"]
   s.homepage = %q{http://github.com/tmaeda/auto_ar}
-  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Auto_ar"]
+  s.rdoc_options = ["--line-numbers", "--inline-source", "--title", "Auto_ar", "--main", "README"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{auto_ar}
-  s.rubygems_version = %q{1.3.5}
+  s.rubygems_version = %q{1.3.7}
   s.signing_key = %q{/home/tmaeda/.gemcert/gem-private_key.pem}
   s.summary = %q{A gem that makes ActiveRecord subclasses on the fly}
   s.test_files = ["test/auto_ar_test.rb", "test/test_helper.rb"]
@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
     current_version = Gem::Specification::CURRENT_SPECIFICATION_VERSION
     s.specification_version = 3
 
-    if Gem::Version.new(Gem::RubyGemsVersion) >= Gem::Version.new('1.2.0') then
+    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
     else
     end
   else
