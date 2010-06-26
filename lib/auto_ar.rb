@@ -46,7 +46,7 @@ if defined?(ActiveRecord::Base)
           f_key = method_name.singularize.foreign_key
           if self.respond_to?(f_key)
             target_klass = Object.const_get(method_name.classify)
-            target_klass.class_eval("has_many :#{self.class.to_s.pluralize.underscore.intern}")
+            target_klass.class_eval("has_many :#{self.class.to_s.pluralize.underscore}")
             self.class.class_eval("belongs_to :#{method_sym}")
           else
             raise NoMethodError
@@ -58,7 +58,7 @@ if defined?(ActiveRecord::Base)
           if conn.tables.include?(table_name) &&
               conn.columns(table_name).map(&:name).include?(f_key)
             target_klass = Object.const_get(method_name.classify)
-            target_klass.class_eval("belongs_to :#{self.class.to_s.singularize.underscore.intern}")
+            target_klass.class_eval("belongs_to :#{self.class.to_s.singularize.underscore}")
             self.class.class_eval("has_many :#{method_sym}")
           else
             raise NoMethodError
